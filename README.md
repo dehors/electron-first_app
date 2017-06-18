@@ -6,4 +6,4 @@
 
 ## Run
 
-* npm start
+* execute `npm start`
