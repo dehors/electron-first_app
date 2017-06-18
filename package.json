@@ -12,7 +12,8 @@
   ],
   "author": "luismartinez242011@gmail.com",
   "license": "ISC",
-  "devDependencies": {
-    "electron": "^1.6.11"
+  "dependencies": {
+    "electron": "^1.6.11",
+    "mysql": "^2.13.0"
   }
 }
