@@ -22,35 +22,6 @@ let menuTemplate = [
 
 let mainWindow;
 
-
-//-----------------------------Config app
-//Close all windows
-app.on('window-all-closed', function() {
-	if(process.platform != 'darwin') {
-		app.quit();
-	}
-});
-
-//init app
-app.on('ready', function() {
-	initWindow();
-
-	electron.powerMonitor.on('on-ac', () => {
-		mainWindow.restore()
-	})
-
-	electron.powerMonitor.on('on-battery', () => {
-		mainWindow.minimize()
-	})
-});
-
-// Reopen the app on macOS
-app.on('activate', () => {
-	if (mainWindow === null) {
-		createWindow()
-	}
-})
-
 //-----------------------------Windows
 function initWindow(argument) {
 	// Create the browser window.
@@ -97,3 +68,31 @@ function openAboutWindow() {
 		aboutWindow.show()
 	})
 }
+
+//-----------------------------Config app
+//init app
+app.on('ready', function() {
+	initWindow()
+
+	electron.powerMonitor.on('on-ac', () => {
+		mainWindow.restore()
+	})
+
+	electron.powerMonitor.on('on-battery', () => {
+		mainWindow.minimize()
+	})
+});
+
+//Close all windows
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
+})
+
+// Reopen the app on macOS
+app.on('activate', () => {
+	if (mainWindow === null) {
+		createWindow()
+	}
+})
