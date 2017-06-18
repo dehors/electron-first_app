@@ -28,6 +28,11 @@ function initWindow(argument) {
 	let mainWindow = new BrowserWindow({
 		width: 1280,
 		height: 720
+		/*resizable:false,
+		minimizable:false,
+		maximizable:false,
+		fullscreen:true
+		https://electron.atom.io/docs/api/browser-window/*/
 	})
 
 	// Load the index.html file
@@ -38,6 +43,7 @@ function initWindow(argument) {
 	}))
 
 	// Set up the menu
+	mainWindow.webContents.openDevTools()
 	var menu = Menu.buildFromTemplate(menuTemplate)
 	mainWindow.setMenu(menu)
 

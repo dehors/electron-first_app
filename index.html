@@ -1,11 +1,29 @@
 <!doctype html>  
 <html>  
-  <head>
-    <meta charset="utf-8">
-    <title>Hola Mundo!</title>
-  </head>
-  <body>
-    <h1>HOLA MUNDO!</h1>
-    <p>Ésta es una aplicación hecha con Electron.</p>
-  </body>
+<head>
+	<meta charset="utf-8">
+	<title>Hola Mundo!</title>
+</head>
+<body>
+	<h1>HOLA MUNDO!</h1>
+	<p>Ésta es una aplicación hecha con Electron.</p>
+	<div id="resultDiv"></div>
+	<script type="text/javascript">
+		var mysql      = require('mysql');
+		var connection = mysql.createConnection({
+			host     : 'localhost',
+			user     : 'root',
+			password : '',
+			database : 'cecna'
+		});
+
+		connection.connect(function(){
+			console.log('DB connect init');
+		});
+
+		connection.end(function(){
+			console.log('DB connect destroy');
+		});
+	</script>
+</body>
 </html>
